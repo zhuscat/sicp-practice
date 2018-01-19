@@ -1,0 +1,21 @@
+(define (filtered-accumulate combiner filter null-value term a next b)
+  (cond ((> a b) null-value)
+        ((filter a) (combiner (term a) (filtered-accumulate combiner filter null-value term (next a) next b)))
+        (else (filtered-accumulate combiner filter null-value term (next a) next b))))
+
+; a)
+(define (sum-prime a b)
+  (filtered-accumulate + prime? 0 identity a inc b))
+
+; b)
+(define (sum-co-prime n)
+  (define (coprime? i)
+    (= (gcd i n) 1))
+  (filtered-accumulate + coprime? 0 identity 1 inc (- n 1)))
+
+(define (f x y)
+  (let ((a (+ 1 (* x y)))
+        (b (- 1 y)))
+    (+ (* x (square a))
+       (* y b)
+       (* a b))))
