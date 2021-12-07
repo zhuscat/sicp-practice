@@ -23,3 +23,6 @@ brew install mit-scheme
 ```
 1 ]=> (cd "ch1")
 ```
+
+HELLO
+OK
