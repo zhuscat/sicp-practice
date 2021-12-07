@@ -25,3 +25,4 @@ brew install mit-scheme
 ```
 
 HELLO
+OK
